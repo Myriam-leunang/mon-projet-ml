@@ -68,15 +68,3 @@ model_raw, history_raw = train_with_tensorboard(
 # --- Interprétation (à compléter après observation dans TensorBoard) ---
 # TODO : indiquer ici dans quelle situation (a), (b) ou (c) vous tombez,
 # et votre interprétation, une fois les courbes observées dans TensorBoard.
-
-# --- Interprétation ---
-# Situation observée : (a) pour california_norm — train_loss et val_loss
-# descendent ensemble de façon saine, se stabilisent après quelques dizaines
-# d'epochs, sans écart significatif entre les deux courbes.
-# Pour california_raw : la loss reste très élevée et instable/plafonne,
-# car les features à grande échelle (Latitude/Longitude ~37-38) dominent
-# les gradients et empêchent le modèle d'apprendre correctement les
-# features à petite échelle (AveRooms ~5-6). Même architecture, même
-# optimizer, même durée : seule la normalisation change, et c'est elle
-# qui explique tout l'écart entre les deux runs. Ceci justifie le
-# preprocessing (StandardScaler) mis en place en Phase 1.
